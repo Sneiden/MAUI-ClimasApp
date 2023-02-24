@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Climas.Views.ClimasPage"
+             xmlns:Model="clr-namespace:Climas.Models"
+             Title="Climas">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Agregar" Clicked="ToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ListView x:Name="ClimasList" RowHeight="150">
+        <ListView.ItemTemplate>
+            <DataTemplate x:DataType="Model:City">
+                <ViewCell>
+
+                    <Frame HasShadow="True" Margin="2,2,2,2">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Source="{Binding PhotoUrl}" Grid.Column="0" Aspect="Fill"/>
+
+                            <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+                                <Label Text="{Binding CityName}" HorizontalOptions="Center" />
+                                <Label Text="{Binding Temp, StringFormat='{0}°C'}" HorizontalOptions="Center" />
+                                <Label Text="{Binding Hora, StringFormat='{0:hh:mm tt}'}" HorizontalOptions="Center" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Frame>
+
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

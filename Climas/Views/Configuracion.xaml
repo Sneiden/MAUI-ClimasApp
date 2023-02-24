@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Climas.Views.Configuracion"
+             xmlns:Model="clr-namespace:Climas.Models"
+             Title="Configuracion">
+    <StackLayout>
+        <ListView x:Name="ClimasList" RowHeight="50">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="Model:City">
+                    <ViewCell>
+
+                        <Border Margin="2,2,2,2">
+                            <HorizontalStackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+
+                                        <Label Text="{Binding CityName}" HorizontalOptions="Start" Grid.Column="1"/>
+                                        <Button Text="Eliminar" Clicked="Button_Clicked" Grid.Column="2" HorizontalOptions="End"/>
+                                        <!--<Label Text="{Binding Temp, StringFormat='{0}°C'}" HorizontalOptions="Center" />-->
+                                        <!--<Label Text="{Binding Hora, StringFormat='{0:hh:mm tt}'}" HorizontalOptions="Center" />-->
+                                    <!--</Grid>-->
+                                </HorizontalStackLayout>
+                        </Border>
+
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

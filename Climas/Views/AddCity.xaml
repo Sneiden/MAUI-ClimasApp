@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Climas.Views.AddCity"
+             Title="AddCity">
+    <ScrollView>
+        <VerticalStackLayout>
+
+            <Frame CornerRadius="200" WidthRequest="200" HeightRequest="200">
+                <Image x:Name="imgCar" Source="dotnet_bot"></Image>
+            </Frame>
+
+            <Entry x:Name="entryCity" Placeholder="City" Keyboard="Chat"/>
+            <Entry x:Name="entryLatitud" Placeholder="Latitud" Keyboard="Numeric"/>
+            <Entry x:Name="entryLongitud" Placeholder="Longitud" Keyboard="Numeric"/>
+            <Entry x:Name="entryPhotoUrl" Placeholder="Photo Url" Keyboard="Url"/>
+            
+            <Button x:Name="btnAceptar" Text="Aceptar" Clicked="btnAceptar_Clicked" Margin="0,0,0,4"/>
+            <!--<Button x:Name="btnPhoto" Text="Tomar foto"/>-->
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
