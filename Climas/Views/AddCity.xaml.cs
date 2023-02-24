@@ -15,8 +15,29 @@ public partial class AddCity : ContentPage
         City city = new()
         {
             CityName = entryCity.Text,
-            Latitude = float.Parse(entryLatitud.Text),
-            Longitude = float.Parse(entryLongitud.Text),
+            Latitude = double.Parse(entryLatitud.Text),
+            Longitude = double.Parse(entryLongitud.Text),
+            PhotoUrl = entryPhotoUrl.Text,
+        };
+        var cityResult = await new DataContext()
+            .SetCity(city);
+
+        await DisplayAlert("Auto Favorito", cityResult ? "Ciudad Agregada Correctamente" : "La Ciudad ya se encuentra en agregada", "OK");
+        await Navigation.PopAsync();
+    }
+
+    private async void btnAceptarHere_Clicked(object sender, EventArgs e)
+    {
+        var location = await Geolocation.Default.GetLocationAsync();
+
+        entryLatitud.Text = location.Latitude.ToString();
+        entryLongitud.Text = location.Longitude.ToString();
+
+        City city = new()
+        {
+            CityName = entryCity.Text,
+            Latitude = location.Latitude,
+            Longitude = location.Longitude,
             PhotoUrl = entryPhotoUrl.Text,
         };
         var cityResult = await new DataContext()

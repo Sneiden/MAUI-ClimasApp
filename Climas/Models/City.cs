@@ -11,7 +11,7 @@ namespace Climas.Models
         public float Temp { get; set; }
         public DateTime Hora { get; set; }
         public string PhotoUrl { get; set; }
-        public float Latitude { get; set; }
-        public float Longitude { get; set; }
+        public double? Latitude { get; set; }
+        public double? Longitude { get; set; }
     }
 }

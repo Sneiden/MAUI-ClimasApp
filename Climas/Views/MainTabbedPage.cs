@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
 
 namespace Climas.Views
 {
-    public class MainTabbedPage : TabbedPage
+    public class MainTabbedPage : Microsoft.Maui.Controls.TabbedPage
     {
         public MainTabbedPage()
         {
             Children.Add(new ClimasPage());
             Children.Add(new Configuracion());
+            Children.Add(new MapCities());
+
+            On<Microsoft.Maui.Controls.PlatformConfiguration.Android>().SetIsSwipePagingEnabled(false);
+
 
         }
     }

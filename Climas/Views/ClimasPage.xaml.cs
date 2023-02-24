@@ -12,21 +12,21 @@ public partial class ClimasPage : ContentPage
         InitializeComponent();
 
         
-        citys = new()
-        {
-            new City
-            {
-                CityName="Mexicali",
-                Hora=DateTime.Now,
-                PhotoUrl="https://www.periodismonegro.mx/wp-content/uploads/2021/05/contaminaci%C3%B3n.jpg",
-            },
-            new City
-            {
-                CityName="Culiacan",
-                Hora=DateTime.Now,
-                PhotoUrl="https://www.rtv.org.mx/masnoticias/wp-content/uploads/sites/13/2019/10/91018024.jpg",
-            }
-        };
+        //citys = new()
+        //{
+        //    new City
+        //    {
+        //        CityName="Mexicali",
+        //        Hora=DateTime.Now,
+        //        PhotoUrl="https://www.periodismonegro.mx/wp-content/uploads/2021/05/contaminaci%C3%B3n.jpg",
+        //    },
+        //    new City
+        //    {
+        //        CityName="Culiacan",
+        //        Hora=DateTime.Now,
+        //        PhotoUrl="https://www.rtv.org.mx/masnoticias/wp-content/uploads/sites/13/2019/10/91018024.jpg",
+        //    }
+        //};
     }
 
     //public void AddCity( City city )
@@ -40,7 +40,9 @@ public partial class ClimasPage : ContentPage
 
         foreach (City city in citys)
         {
-            var weather = await new RestService().GetWeather();
+            if (city.Latitude is null || city.Longitude is null)
+                continue;
+            var weather = await new RestService().GetWeather(city.Latitude.Value, city.Longitude.Value);
             if (weather != null)
             {
                 city.Temp = weather.current_weather.temperature;

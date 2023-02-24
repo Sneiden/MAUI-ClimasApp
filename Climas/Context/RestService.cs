@@ -16,9 +16,9 @@ namespace Climas.Context
             _httpClient.BaseAddress = _urlBase;
         }
 
-        public async Task<WeatherApi> GetWeather()
+        public async Task<WeatherApi> GetWeather(double lat, double lon)
         {
-            var response = await _httpClient.GetAsync("forecast?latitude=20.72&longitude=-103.37&current_weather=true");
+            var response = await _httpClient.GetAsync($"forecast?latitude={lat}&longitude={lon}&current_weather=true");
             if (response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
